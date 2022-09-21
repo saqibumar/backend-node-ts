@@ -1,0 +1,136 @@
+# To overwrite any of the config values, create a file config.local.yaml and put
+# there only the values to be overwritten.
+BELLWETHER_API_URL: '{{ BELLWETHER_API_URL }}'
+PARSE_APPLICATION_ID: '{{ PARSE_APPLICATION_ID }}'
+PARSE_SERVER_URL: '{{ PARSE_SERVER_URL }}'
+PARSE_JAVASCRIPT_KEY: "{{ PARSE_JAVASCRIPT_KEY }}"
+
+WEB_APP_API_URL: '{{ WEB_APP_API_URL }}'
+# Below line will allow all request from all origins
+# CORSorigins: ["*"]
+CORSorigins: []
+
+# Note:
+# CORSorigins variable is only for custom origins.
+# Client Origin is always whitelisted.
+
+# Note:
+# When changing Client and Server URLs below,
+# Remember to also update them on `FE/public/env.js`
+clientUrl: 'http://localhost'
+clientPort: '8000'
+
+serverUrl: 'http://localhost'
+serverPort: '3001'
+
+# Running docker with --network="host" will translate 127.0.0.1 to point to the host
+roasterAddress: '127.0.0.1:8443'
+# roasterAddress: 'https://058091678382.ngrok.io'
+
+# These min/max temperatures are in 100xC
+# Todo the duplicated temperatures are also in utilsLibModule config file, should be in one place only
+minProfileTemperature: 6200
+minRoastTemperature: 2100
+maxRoastTemperature: 23200
+preheatMaxTemperature: 21000
+
+maxProfileSteps: 100
+
+retries: 4
+
+maxTimeout: 12*1000
+
+isFake: false
+app_name: 'roaster-app'
+# Automatically set from the content of a .version file from inside the app
+app_version:
+environment: '{{ ENVIRONMENT }}'
+
+logzio_token: 'PqeucrEsJDMbUqLirjXgdWKfVmEFNwAG'
+logzio_host: 'listener.logz.io'
+
+aws_cognito_customer:
+    aws_cognito_region: 'us-east-1'
+    aws_user_pools_id: 'us-east-1_2ARzXzUzT'
+    aws_user_pools_web_client_id: '23sffebu00an3pii8h4q0tcqh7'
+
+aws_cognito_bellwether:
+    aws_cognito_region: 'us-east-1'
+    aws_user_pools_id: 'us-east-1_zR2j8TWJH'
+    aws_user_pools_web_client_id: '31groh48kerd5d2d4kf1duseg0'
+
+aws_cognito_bellwether_decode_key:
+    -
+        {
+          'alg': 'RS256',
+          'e': 'AQAB',
+          'kid': 'FTsIESAWxYoi73lPyjMc4qv6Y6p3KNlpDxoZIQd9JD0=',
+          'kty': 'RSA',
+          'n': '0Z2WLRWz8ytd6rxG28n0xAtxABTp0mWW9RxTPGNPlX9MwRtPA2Fw0I7VTULCk-AHizsKOX8jY7T5iePVrDTzMe0oWHyjoUcM7osiOo7wVak-nTgWFGY2Im6ofwjmJEfdogVK5zs_96h7ZSZgi2d3S9_uKb_ppZXVYU48kZF3iynpq08odvUrLQTd2ckP41Kvso23P24dBAYJ3oxjvXJAtPVsZpzyRwa8P-Klr_Wi5xicVVP6bF6At_o0skmtD7uDZM5Jcob3Hw3gM8Qp6n4U1sjU71X1xFfUTU5MN-uOqzndgO-X3ZBtwSqglJlNgKZoXvRjecUCaoyWzA9P7Enyww',
+          'use': 'sig',
+        }
+    -
+        {
+          'alg': 'RS256',
+          'e': 'AQAB',
+          'kid': '6u7L9VaedqKc9FCOXp/vJMnICvsn3uHlPxqXR+B2Zak=',
+          'kty': 'RSA',
+          'n': 'phHz4WFIaT-Wnef1LeuhMqp1rCvx1vwO9jfToz2y-qnCDZCTp9YHwfmKm8DEiS0uZyq0zNJRKnEoLoZfi-O48x3WEfNxIXLxnhf7kVorPq5RgKF_ZG_VchKbQM0IHH6KhS9Isq6Tv2ipAz_hVK5GmZSCuaPt-Zsw_lB510KRnj9Iq_r1bm9b6nxrmm2280F-6DSeEjNQTU9bkYR0H9OO2KIrltFWsiN84EY-k9t-3UfTnK-_gUQIPLQKHYGgjyt-62R3KgVuELuu7S2GN9FsrGLB387c6HuevowimhsWiqRMGp03nCUuUS8f_JJNfuqvgMVesBRbITYnYv-c2XZupQ',
+          'use': 'sig',
+        }
+
+aws_cognito_customer_decode_key:
+    -
+        {
+          'alg': 'RS256',
+          'e': 'AQAB',
+          'kid': 'XafRXQespv4Sm/dDW1OTU67J75Prk9/qL3E089fgWRc=',
+          'kty': 'RSA',
+          'n': 'kZ1ARsEcl2VO6NscUGVOhsILM8CHsSu_RUOu15wdC85Fl7tBXuzFHiO8kfM0CbNEZc7HX4Y-yCjShqxBmugz9aAYleqjJfnMnAufscx_UGe2c3n38ZjlyTqDN2RtcV_FsLnd2NFa5K65txG4RrPAg-CV31hDysH9ixkpaENpnIekYrGvj9AslMteay8_WsfRxe-tuikABVQpL46_qYfOFbbjJMJIdMwnrF__4eSLhQ_JvEkxcPXQSrzovSKWrDviSTzMCxMxg43P6fKrpJ5mwsq3F_mgLElotIcrJ7dZtxJh1vqI8WJAE2Uh5C_WYjoKzho4cCyOAbYO6R9n7L50xw',
+          'use': 'sig',
+        }
+    -
+        {
+          'alg': 'RS256',
+          'e': 'AQAB',
+          'kid': 'XM6alQ9EMaf7jyB1ylmIJS02/wlzlbYKNQ3FjMyUNEo=',
+          'kty': 'RSA',
+          'n': 'm9Ue4nYXrJfkvwDSOGZa0ASmYd8R9QPGKD8MFZu_skfyv85QAYHhI3g0v9s8o7fPtZEghma4CxKs4A6H19LBB4qsHngcY0xrzucBjip_N4giN68h9pRU2DzR0BordDk49APWHhZdHt4A0fDJzP0QciKR4YPN0kPLWT_PDavC5q47f0i9kDv4tOinVI4SzxwkLt3ErY-KRMkXYGvaNjF8yYmzuqBWeMzZ-C_FHy3aZmil1IBMU9SEt4UMrSgtZW7AOJEwarAK9QRyVH5UDHTtUzZwS4FHDM_Omsm_j2ur7zbwYTSRfVpxZf8ngFBn6IcItwkVGA00Q4q5KxYVl3o-6Q',
+          'use': 'sig',
+        }
+
+DRUM_PREHEAT_DIFFERENCE: 400
+ADD_MEASUREMENTS_INTERVAL: 800
+DISCONNECTED_MODE: false
+ROASTS_BEFORE_MAINTENANCE: 6
+ROAST_PROFILE_VERSION: 22
+
+# When running vue as frontend, set it to true
+BWC_VUE: true
+
+#LOKALISE CONFIGURATIONS
+lokalise:
+    LOCALES_PATH: "../../../FE/bwc-vue/src/locales"
+    ZIP_PATH: "../../../FE/bwc-vue/src/locales.zip"
+    EXTRACT_PATH: "../../../FE/bwc-vue/src"
+    TAGS: [roaster-app]
+    LANGUAGES: [en, es]
+    CRON_SCHEDULE: '0 */12 * * *'
+    #production
+    # LOKALIZE_PROJECT_ID: "73687768604653d38f36e2.85638057"
+    # LOKALIZE_API_TOKEN: "b87be1f4c6b6d7c03c1cbc334529b4b865006f78"
+    #Engineering
+    LOKALIZE_PROJECT_ID: "{{ LOKALIZE_PROJECT_ID }}"
+    LOKALIZE_API_TOKEN: "{{ LOKALIZE_API_TOKEN }}"
+    #Staging
+    #LOKALIZE_PROJECT_ID: "792944736154a489cee4e5.68639587"
+    #LOKALIZE_API_TOKEN: "b87be1f4c6b6d7c03c1cbc334529b4b865006f78"
+
+# Exception Frameworks available store types: Logzio, SQLite, RabbitMQ
+EXCEPTION_FRAMEWORK:
+    STORE_TYPES: ['Logzio', 'SQLite', 'RabbitMQ']
+    LOCAL_RETENTION_PERIOD_DAYS: 5
+
+authentication:
+    type: pin # pin | credential | autologin
+    autoLoginBaseUrl: http://localhost:6000

@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+      "target": "ES2019",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "lib": [
+          "ES2018",
+          "dom"
+      ],
+      "allowSyntheticDefaultImports": true,
+      "strictBindCallApply": true,
+      "noImplicitThis": true,
+      "removeComments": true,
+      "baseUrl": ".",
+      "paths": {
+          "*": [
+              "node_modules/*"
+          ]
+      },
+      "sourceMap": true
+  },
+  "include": [
+      "**/*.ts"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}
